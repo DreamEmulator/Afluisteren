@@ -1,10 +1,9 @@
-# Classifying Live Audio Input with a Built-in Sound Classifier
+![appstore](https://user-images.githubusercontent.com/13303504/146572215-72282939-ab56-4b6d-9dfb-22a71d2a1fd1.png)
 
-Detect and identify hundreds of sounds by using a trained classifier.
+# VPRO Hackthon #13 - Team Afluisteren
 
+## Laat je afluisteren!
 
+*Wij luisteren naar een podcasts maar laat de podcasts eens naar jou luisteren*
 
-
-## Overview
-
-- Note: This sample code project is associated with WWDC21 session [10036: Discover Built-in Sound Classification in Sound Analysis](https://developer.apple.com/wwdc21/10036/).
+- Note: Dit project is gebasseerd op [10036: Discover Built-in Sound Classification in Sound Analysis](https://developer.apple.com/wwdc21/10036/).
