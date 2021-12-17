@@ -19,16 +19,16 @@ struct FoundPod {
 }
 
 var FindablePods: [FoundPod] = [
-    water
+    water,
+//    dog
 ]
 
 
-let water =     FoundPod(
+let water = FoundPod(
     sounds: ["Water",
              "Water Pump",
              "Water Tap Faucet",
-             "Waterfall",
-             "Glass Clink" // Remove
+             "Waterfall"
 ],
     title:"stromend water",
     subTitle: "misschien ben je bij een waterval of zit je op de wc",
@@ -37,3 +37,20 @@ let water =     FoundPod(
     background:  "waterfall"
 )
 
+let dog = FoundPod(
+    sounds: ["Accoustic Guitar",
+             "Applause",
+             "Dog",
+             "Dog Bark",
+             "Dog Growl",
+             "Dog Howl",
+             "Dog Whimper",
+             "Flute",
+             "Violin Fiddle"
+],
+    title:"een hond",
+    subTitle: "zeg hoi tegen hond namens mij",
+    body: "Beethoven is meer dan een hond. Klassieke muziek... eh, Bach? In de vijfdelige podcast 'Beethoven is meer dan een hond' vertellen Jet en Fieke alles wat je moet weten over klassieke muziek.",
+    cover: "beethoven",
+    background:  "dog"
+)
