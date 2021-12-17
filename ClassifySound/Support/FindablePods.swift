@@ -11,16 +11,18 @@ import SwiftUI
 
 struct FoundPod {
     var sounds: [String] // LabelNames from struct SoundIdentifier
-    var title: String
-    var subTitle: String
-    var body: String
+    var soundname: String
+    var tip: String
+    var podcastTitle: String
+    var podcastDescription: String
     var cover: String
     var background: String
 }
 
 var FindablePods: [FoundPod] = [
     water,
-//    dog
+    dog,
+    alcohol
 ]
 
 
@@ -29,12 +31,26 @@ let water = FoundPod(
              "Water Pump",
              "Water Tap Faucet",
              "Waterfall"
-],
-    title:"stromend water",
-    subTitle: "misschien ben je bij een waterval of zit je op de wc",
-    body: "Sterk water. In de podcast Sterk water hoor je ware verhalen van Terschelling die schuren, raken en verwonderen.",
+            ],
+    soundname:"stromend water",
+    tip: "misschien ben je bij een waterval of zit je op de wc",
+    podcastTitle: "Sterk water.",
+    podcastDescription: "In de podcast Sterk water hoor je ware verhalen van Terschelling die schuren, raken en verwonderen.",
     cover: "sterk_water",
     background:  "waterfall"
+)
+
+let alcohol = FoundPod(
+    sounds: [
+        "Gargling",
+        "Glass Clink"
+    ],
+    soundname:"glas klinken",
+    tip: "dat je lekker aan het proosten bent",
+    podcastTitle: "Eerlijk over alcohol",
+    podcastDescription: "Presentator Koos van Plateringen komt met een nieuwe podcast. In Eerlijk over alcohol vertellen hij en andere BN'ers over hun ervaringen met drank.",
+    cover: "koos_alcohol",
+    background:  "alcohol"
 )
 
 let dog = FoundPod(
@@ -47,10 +63,28 @@ let dog = FoundPod(
              "Dog Whimper",
              "Flute",
              "Violin Fiddle"
-],
-    title:"een hond",
-    subTitle: "zeg hoi tegen hond namens mij",
-    body: "Beethoven is meer dan een hond. Klassieke muziek... eh, Bach? In de vijfdelige podcast 'Beethoven is meer dan een hond' vertellen Jet en Fieke alles wat je moet weten over klassieke muziek.",
+            ],
+    soundname:"een hond",
+    tip: "zeg hoi tegen hond namens mij",
+    podcastTitle: "Beethoven is meer dan een hond. ",
+    podcastDescription: "Klassieke muziek... eh, Bach? In de vijfdelige podcast 'Beethoven is meer dan een hond' vertellen Jet en Fieke alles wat je moet weten over klassieke muziek.",
     cover: "beethoven",
     background:  "dog"
 )
+
+let office = FoundPod(
+    sounds: [
+        "Printer",
+        "Typewriter",
+        "Typing",
+        "Typing Computer Keyboard",
+        "Screaming"
+    ],
+    soundname:"dat je typt",
+    tip: "neem even pauze!",
+    podcastTitle: "Gothrecht",
+    podcastDescription: "Gothrecht is een absurdistisch fictief hoorspel met originele muziek. Een gothic vrouw genaamd Brinta, moet zich voor de liefde een weg banen uit het 'Pierre Bokma-kantoorcomplex'",
+    cover: "gothrecht",
+    background:  "office"
+)
+

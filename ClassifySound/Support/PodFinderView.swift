@@ -21,8 +21,8 @@ struct PodFinderView: View {
     @Binding var config: AppConfiguration
     
     @State var title: String = ""
-//    @State var foundPod: FoundPod? = FindablePods[0]
-    @State var foundPod: FoundPod?
+    @State var foundPod: FoundPod? = FindablePods[0]
+//    @State var foundPod: FoundPod?
     var subscriptions = Set<AnyCancellable>()
     
     let height = UIScreen.main.bounds.size.height
@@ -51,14 +51,14 @@ struct PodFinderView: View {
                             .font(.system(size: 24, weight: .bold))
                             .shadow(radius: 5)
                         
-                        Text(showPod.title)
+                        Text(showPod.soundname)
                             .italic()
                             .frame(maxWidth: width - width / 4, alignment: .topLeading)
                             .foregroundColor(.white)
                             .font(.system(size: 24, weight: .bold))
                             .shadow(radius: 5)
                         
-                        Text(showPod.subTitle)
+                        Text(showPod.tip)
                             .frame(maxWidth: width - width / 4, alignment: .topLeading)
                             .foregroundColor(.white)
                             .font(.system(size: 24, weight: .bold))
@@ -86,7 +86,15 @@ struct PodFinderView: View {
                         }.offset(x: -width / 4, y: width / 24)
                             .zIndex(1)
                         
-                        Text(showPod.body)
+                        Text(showPod.podcastTitle)
+                            .background(.black)
+                            .frame(maxWidth: width - width / 4, alignment: .topLeading)
+                            .foregroundColor(.white)
+                            .font(.system(size: 24, weight: .bold))
+                            .shadow(radius: 5)
+                            .offset( y: width / 24)
+                        
+                        Text(showPod.podcastDescription)
                             .frame(maxWidth: width - width / 4)
                             .padding()
                             .background(.black)
@@ -133,17 +141,16 @@ struct PodFinderView: View {
         }.onReceive(state.$detectionStates){
             newState in
             let found = newState
-                .filter({$0.1.currentConfidence > 0.8})
+                .filter({$0.1.currentConfidence > 0.6})
                 .map {$0.0.displayName}
             if !found.isEmpty {
                 let foundSoundName = found[0]
-                let pod = FindablePods.first(where: {
-                    $0.sounds.contains {
+                let pod = FindablePods.first(where: {                   $0.sounds.contains {
                         $0 == foundSoundName
                     }
                 })
                 if let foundPodcast = pod {
-                    title = foundPodcast.title
+                    title = foundPodcast.soundname
                     foundPod = foundPodcast
                 }
             }
