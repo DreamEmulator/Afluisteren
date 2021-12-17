@@ -23,7 +23,7 @@ struct AppConfiguration {
     var overlapFactor = Double(0.9)
 
     /// A list of sounds to identify from system audio input.
-    var monitoredSounds = Set<SoundIdentifier>()
+    var monitoredSounds = try! listAllValidSoundIdentifiers()
 
     /// Retrieves a list of the sounds the system can identify.
     ///

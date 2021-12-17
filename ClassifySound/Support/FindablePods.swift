@@ -14,7 +14,7 @@ struct FoundPod {
     var title: String
     var subTitle: String
     var body: String
-    var imageSound: String
+    var cover: String
     var background: String
 }
 
@@ -28,11 +28,12 @@ let water =     FoundPod(
              "Water Pump",
              "Water Tap Faucet",
              "Waterfall",
-             "Glass Clink"
+             "Glass Clink" // Remove
 ],
     title:"stromend water",
     subTitle: "misschien ben je bij een waterval of zit je op de wc",
     body: "Sterk water. In de podcast Sterk water hoor je ware verhalen van Terschelling die schuren, raken en verwonderen.",
-    imageSound: "sterk_water",
-    background: "waterfall"
+    cover: "sterk_water",
+    background:  "waterfall"
 )
+

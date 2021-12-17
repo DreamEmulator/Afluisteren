@@ -18,11 +18,40 @@ enum PodFinderState {
 
 struct PodFinderView: View {
     @ObservedObject var state: AppState
+    @Binding var config: AppConfiguration
+
     @State var title: String = ""
+    @State var foundPod: FoundPod?
     var subscriptions = Set<AnyCancellable>()
     var body: some View {
-        VStack {
-            Text(title)
+        ZStack{
+            if let foundPod = foundPod {
+                Image("waterfall")
+                VStack {
+                    Text(foundPod.title)
+                    Text(foundPod.subTitle)
+                    Text(foundPod.body)
+                    Image(foundPod.cover)
+                        .frame(width: 100, height: 100, alignment: .center)
+                }
+            } else if !state.soundDetectionIsRunning {
+                ZStack {
+                    Image("listening")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .edgesIgnoringSafeArea(.all)
+                    Text("Laat me luisteren")
+                        .padding()
+                        .background(.black)
+                        .foregroundColor(.white)
+                        .cornerRadius(15)
+                        .font(.system(size: 32))
+                        .onTapGesture {
+                            state.restartDetection(config: config)
+                        }
+                }
+            }
+
         }.onReceive(state.$detectionStates){
             newState in
             let found = newState
@@ -37,6 +66,7 @@ struct PodFinderView: View {
                 })
                 if let foundPodcast = pod {
                     title = foundPodcast.title
+                    foundPod = foundPodcast
                 }
             }
         }
