@@ -22,7 +22,9 @@ struct FoundPod {
 var FindablePods: [FoundPod] = [
     water,
     dog,
-    alcohol
+    alcohol,
+    office,
+    corona
 ]
 
 
@@ -88,3 +90,17 @@ let office = FoundPod(
     background:  "office"
 )
 
+let corona = FoundPod(
+    sounds: [
+        "Ambulance Siren",
+        "Beep",
+        "Cough",
+        "Sneeze"
+    ],
+    soundname: "je hoesten",
+    tip: "Oh jee! Positief getest?",
+    podcastTitle: "Coronastrijders",
+    podcastDescription: "Het personeel in de Noord-Hollandse ziekenhuizen werkt harder dan ooit, nu de coronacrisis de wereld al maanden in zijn greep heeft.",
+    cover: "coronastrijders",
+    background: "hospital"
+)

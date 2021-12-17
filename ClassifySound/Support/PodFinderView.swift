@@ -21,8 +21,8 @@ struct PodFinderView: View {
     @Binding var config: AppConfiguration
     
     @State var title: String = ""
-    @State var foundPod: FoundPod? = FindablePods[0]
-//    @State var foundPod: FoundPod?
+//    @State var foundPod: FoundPod? = FindablePods[0]
+    @State var foundPod: FoundPod?
     var subscriptions = Set<AnyCancellable>()
     
     let height = UIScreen.main.bounds.size.height
@@ -87,8 +87,9 @@ struct PodFinderView: View {
                             .zIndex(1)
                         
                         Text(showPod.podcastTitle)
-                            .background(.black)
                             .frame(maxWidth: width - width / 4, alignment: .topLeading)
+                            .padding()
+                            .background(.black)
                             .foregroundColor(.white)
                             .font(.system(size: 24, weight: .bold))
                             .shadow(radius: 5)
