@@ -19,10 +19,8 @@ enum PodFinderState {
 struct PodFinderView: View {
     @ObservedObject var state: AppState
     @Binding var config: AppConfiguration
-    
-    @State var title: String = ""
-//    @State var foundPod: FoundPod? = FindablePods[0]
     @State var foundPod: FoundPod?
+    
     var subscriptions = Set<AnyCancellable>()
     
     let height = UIScreen.main.bounds.size.height
@@ -39,7 +37,7 @@ struct PodFinderView: View {
                         .resizable()
                         .foregroundColor(.white)
                         .frame(width: 60, height: 60, alignment: .trailing)
-                        .offset(x: width / 3)
+                        .offset(x: width / 3, y: -height / 16)
                         .onTapGesture {
                             foundPod = nil
                         }
@@ -113,7 +111,7 @@ struct PodFinderView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .edgesIgnoringSafeArea(.all)
-                    Text("Mag ik je afluisteren")
+                    Text("Mag ik je afluisteren?")
                         .padding()
                         .background(.black)
                         .foregroundColor(.white)
@@ -142,7 +140,7 @@ struct PodFinderView: View {
         }.onReceive(state.$detectionStates){
             newState in
             let found = newState
-                .filter({$0.1.currentConfidence > 0.6})
+                .filter({$0.1.currentConfidence > 0.8})
                 .map {$0.0.displayName}
             if !found.isEmpty {
                 let foundSoundName = found[0]
@@ -151,8 +149,9 @@ struct PodFinderView: View {
                     }
                 })
                 if let foundPodcast = pod {
-                    title = foundPodcast.soundname
-                    foundPod = foundPodcast
+                    if foundPod == nil {
+                        foundPod = foundPodcast
+                    }
                 }
             }
         }
