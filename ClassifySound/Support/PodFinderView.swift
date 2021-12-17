@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 enum PodFinderState {
     case intial
@@ -16,17 +17,37 @@ enum PodFinderState {
 }
 
 struct PodFinderView: View {
-    @State var podFinderState: PodFinderState = .intial
-    
+    @ObservedObject var state: AppState
+    @State var title: String = ""
+    var subscriptions = Set<AnyCancellable>()
     var body: some View {
-        ZStack {
-            if podFinderState == .intial {
-                Text("Laat me luisteren")
-            } else if podFinderState == .finding {
-                Text("Bezig met luisteren")
-            } else {
-                Text("Found")
+        VStack {
+            Text(title)
+        }.onReceive(state.$detectionStates){
+            newState in
+            let found = newState
+                .filter({$0.1.currentConfidence > 0.5})
+                .map {$0.0.displayName}
+            if !found.isEmpty {
+                let foundSoundName = found[0]
+                let pod = FindablePods.first(where: {
+                    $0.sounds.contains {
+                        $0 == foundSoundName
+                    }
+                })
+                if let foundPodcast = pod {
+                    title = foundPodcast.title
+                }
             }
         }
     }
 }
+
+
+//if podFinderState == .intial {
+//    Text("Laat me luisteren")
+//} else if podFinderState == .finding {
+//    Text("Bezig met luisteren")
+//} else {
+//    Text("Found")
+//}

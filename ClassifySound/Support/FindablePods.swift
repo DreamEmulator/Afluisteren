@@ -27,7 +27,8 @@ let water =     FoundPod(
     sounds: ["Water",
              "Water Pump",
              "Water Tap Faucet",
-             "Waterfall"
+             "Waterfall",
+             "Glass Clink"
 ],
     title:"stromend water",
     subTitle: "misschien ben je bij een waterval of zit je op de wc",

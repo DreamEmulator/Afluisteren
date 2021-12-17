@@ -18,6 +18,7 @@ struct ContentView: View {
     /// The runtime state that contains information about the strength of the detected sounds.
     @StateObject var appState = AppState()
 
+
     var body: some View {
         ZStack {
             if showSetup {
@@ -33,6 +34,7 @@ struct ContentView: View {
                                  config: $appConfig,
                                  configureAction: { showSetup = true })
             }
+            PodFinderView(state: appState)
         }
     }
 }
