@@ -48,7 +48,7 @@ let alcohol = FoundPod(
         "Glass Clink"
     ],
     soundname:"glas klinken",
-    tip: "dat je lekker aan het proosten bent",
+    tip: "mogelijk ben je in een bar of bij de glasbak",
     podcastTitle: "Eerlijk over alcohol",
     podcastDescription: "Presentator Koos van Plateringen komt met een nieuwe podcast. In Eerlijk over alcohol vertellen hij en andere BN'ers over hun ervaringen met drank.",
     cover: "koos_alcohol",

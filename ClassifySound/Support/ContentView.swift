@@ -24,7 +24,7 @@ struct ContentView: View {
             DetectSoundsView(state: appState,
                              config: $appConfig,
                              configureAction: { showSetup = true })
-            PodFinderView(state: appState, config: $appConfig)
+//            PodFinderView(state: appState, config: $appConfig)
         }
     }
 }
